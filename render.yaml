@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: tesslate-app-8888
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///./app.db
+      - key: SECRET_KEY
+        value: tesslate-secret-8888
+      - key: ENVIRONMENT
+        value: production
